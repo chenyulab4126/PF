@@ -14,5 +14,5 @@ People parcipated in the analysis:
 ## Organization
 
 + pipeline: COVID-19 and SLE RNA-seq data analysis.
-+ figs: Data and R codes for generating the figures.
++ fig: Data and R codes for generating the figures.
 
