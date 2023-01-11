@@ -1,4 +1,3 @@
-#COVID-19 差异基因分析
 library(DESeq2)
 library(dplyr)
 library(ggplot2)
@@ -26,7 +25,7 @@ expr_res$Tag[expr_res$log2FoldChange > log2(fc_cutoff) & expr_res$padj < padj_cu
 expr_res$Tag[expr_res$log2FoldChange < (-1 * log2(fc_cutoff)) & expr_res$padj < padj_cutoff] <- "Down"
 expr_res$Tag <- factor(expr_res$Tag, levels = c("Up", "NC", "Down"))
 res_df <- expr_res[, c("GeneID", "baseMean", "log2FoldChange", "lfcSE", "stat", "pvalue", "padj", "Tag")]
-#表达矩阵CPM--按列标化
+
 expr_mat <- as.matrix(cov_counts[,3:ncol(cov_counts)])
 row.names(expr_mat) <- cov_counts$Geneid
 norm_mat <- 1e6 * t(t(expr_mat) / colSums(expr_mat))
@@ -41,7 +40,7 @@ res_df <- res_df[!duplicated(res_df$GeneName),]
 
 write.csv(res_df,file.path(f_out,"DE.csv"),quote = F,row.names = F)
 save(res_df,file = "data/step02_covres.RData")
-###火山图
+
 deseq2_info <- res_df %>% group_by(Tag) %>% summarise(Num = n())
 deseq2_info$Text <- sprintf("N=%d", deseq2_info$Num)
 deseq2_info <- deseq2_info[which(deseq2_info$Tag != "NC"), ]
