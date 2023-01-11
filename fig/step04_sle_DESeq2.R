@@ -118,7 +118,6 @@ if(T){
 }
 
 if(F) {
-  #p鍊兼渶灏忕殑鍓?3涓嬭皟鍜屽墠3涓婅皟
   x1 = dat %>% 
     filter(Tag == "Up") %>% 
     arrange(padj) %>%
