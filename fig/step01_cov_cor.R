@@ -9,8 +9,7 @@ library(gridExtra)
 library(FactoMineR)
 library(ggrepel)
 library(factoextra)
-#整理表达矩阵
-#整理表达矩阵
+
 COV_tpl_count <- read.table("data/COVID-19 lung trasplation/cov_counts.tsv",
                             header = T,check.names = F) 
 
@@ -19,7 +18,7 @@ colnames(gene_info) <- c("Geneid","GeneName")
 cov_counts <- left_join(gene_info,COV_tpl_count)
 colnames(cov_counts) <- c("Geneid","GeneName","CTRL1","CTRL2","COV1","COV2")
 save(cov_counts,file="data/step01cov.Rdata")
-#相关性分析
+
 cnt <- cov_counts[,c(3:ncol(cov_counts))]
 row.names(cnt) <- cov_counts$Geneid
 cnt_mat <- as.matrix(cnt)
@@ -31,7 +30,7 @@ write.csv(format(expr_cor,digits = 4),
           file.path(f_out,"expr_cor.csv"),
           row.names = T,
           quote = F)
-#相关性分析点图
+
 
 tmp_df1 <- data.frame(expr1 = cnt_mat[, 3], expr2 = cnt_mat[, 4])
 p1 <- ggplot(tmp_df1, aes(x = log10(expr1), y = log10(expr2))) +
