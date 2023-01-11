@@ -1,4 +1,3 @@
-#ipf差异分析
 library(DESeq2)
 library(dplyr)
 library(readr)
@@ -86,7 +85,7 @@ res_df2 <- na.omit(res_df1)
 res_df3 <- dplyr::select(res_df2,"GeneID",everything())
 write.csv(res_df3,file.path(f_out,"DE.csv"),quote = F,row.names = F)
 save(res_df3,file = "data/ipfres.RData")
-###火山图
+
 deseq2_info <- res_df3 %>% group_by(Tag) %>% summarise(Num = n())
 deseq2_info$Text <- sprintf("N=%d", deseq2_info$Num)
 deseq2_info <- deseq2_info[which(deseq2_info$Tag != "NC"), ]
@@ -163,7 +162,6 @@ if(T){
 }
 
 if(F) {
-  #p鍊兼渶灏忕殑鍓?3涓嬭皟鍜屽墠3涓婅皟
   x1 = dat %>% 
     filter(Tag == "Up") %>% 
     arrange(padj) %>%
