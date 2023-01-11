@@ -1,16 +1,3 @@
-list.of.packages <- c('VennDiagram','org.Hs.eg.db')
-new.package <- list.of.packages[!(list.of.packages %in% install.packages()[,'packages'])]
-new.package
-packToInst <- setdiff(list.of.packages,install.packages())
-packToInst
-if (T){
-  lapply(packToInst,function(x){
-    BiocManager::install(x,ask = F,update = F)
-  })
-}
-
-
-rm(list = ls())
 #GO-term and KEGG enrichment analysis of DEGs
 library(VennDiagram)
 library(clusterProfiler)
