@@ -1,4 +1,4 @@
-###CoV GSEA分析
+###CoV GSEA
 library(clusterProfiler)
 library(org.Hs.eg.db)
 library(enrichplot)
