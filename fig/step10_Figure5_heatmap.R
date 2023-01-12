@@ -10,7 +10,6 @@ library(circlize)
 library(Hmisc)
 
 ## import data
-setwd("/Users/birongzhang/Downloads/Revised_Figure5-heatmap")
 final <- read.table("Data-Figure5_heatmap.csv",header = T,sep = ",",row.names = 1) 
 head(final)
 
